@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomSingleMessageView">
+        <attr name="csmv_text" format="integer|string"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:fitsSystemWindows="false"
+    app:ignore="NamespaceTypo">
+
+    <data class = "MusicData">
+        <variable
+            name="musicPlaySymbol"
+            type="com.semisky.automultimedia.activity.symbol.MusicPlaySymbol"/>
+
+        <variable
+            name="listener"
+            type="com.semisky.automultimedia.activity.MusicPlayActivity.MusicControlListener"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_music">
+
+        <RelativeLayout
+            android:id="@+id/song_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_icon_music_debug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="132px"
+                android:layout_marginLeft="95px"
+                android:scaleType="center"
+                android:src="@drawable/icon_music"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="406px"
+                android:layout_marginTop="65px"
+                android:layout_marginRight="65px"
+                android:paddingRight="57px"
+                android:background="@drawable/background_song_info">
+
+                <TextView
+                    android:id="@+id/song_name"
+                    android:layout_width="310px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="440px"
+                    android:layout_marginTop="106px"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="#feb501"
+                    android:textSize="36px"
+                    android:text="@{musicPlaySymbol.displayName}"/>
+                <TextView
+                    android:id="@+id/song_singer"
+                    android:layout_width="310px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="440px"
+                    android:layout_below="@id/song_name"
+                    android:layout_marginTop="36px"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26px"
+                    android:text="@{musicPlaySymbol.artist}"/>
+                <TextView
+                    android:layout_width="310px"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_singer"
+                    android:layout_marginLeft="440px"
+                    android:layout_marginTop="14px"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26px"
+                    android:text="@{musicPlaySymbol.album}"/>
+
+                <TextView
+                    android:layout_width="400px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="500px"
+                    android:layout_marginTop="84px"
+                    android:textSize="20px"
+                    android:lines="1"
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/colorWhite"
+                    android:text="@{musicPlaySymbol.position}"/>
+
+                <TextView
+                    android:layout_width="183px"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="574px"
+                    android:layout_marginTop="292px"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textSize="20px"
+                    android:textColor="@color/colorWhite"
+                    android:text='@{ @string/next_music + musicPlaySymbol.nextName}'/>
+            </RelativeLayout>
+
+            <!--app:imagebytes = "@{musicPlaySymbol.alumbPicture}"-->
+            <ImageView
+                android:id="@+id/iv_album_thumb"
+                android:layout_width="337px"
+                android:layout_height="350px"
+                android:layout_marginLeft="377px"
+                android:layout_marginTop="63px"
+                android:scaleType="centerInside"
+                android:src="@drawable/background_song_album_thumb"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="377px"
+                android:layout_marginTop="63px"
+                android:src="@drawable/song_info_picture" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/song_info"
+            android:gravity="center_vertical"
+            android:layout_marginTop="28px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="446px"
+                android:textColor="#fff"
+                android:textSize="24px"
+                app:time="@{musicPlaySymbol.progress}" />
+
+            <SeekBar
+                android:id="@+id/sb_music"
+                android:layout_width="540px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:maxHeight="10px"
+                android:minHeight="10px"
+                android:thumb="@drawable/background_sb_circle_thumb"
+                android:progress="@{musicPlaySymbol.progress}"
+                android:max="@{musicPlaySymbol.duration}"
+                android:progressDrawable="@drawable/music_sb_progress_style_layer_list"
+                android:thumbOffset="25dp" />
+
+            <TextView
+                android:id="@+id/videoDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:textColor="#fff"
+                android:textSize="24px"
+                app:time="@{musicPlaySymbol.duration}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:background="@drawable/music_bootom_background">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="center"
+                android:src="@drawable/bootom_menu_img"
+                android:onClick="@{() -> listener.onMenuClick()}"
+                android:background="@drawable/module_btn_highlight_selector"/>
+
+            <ImageView
+                android:id="@+id/img_pre"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="91px"
+                android:scaleType="center"
+                android:src="@drawable/bootom_pre_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onPreClick()}"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="91px"
+                android:scaleType="center"
+                app:imagesrc="@{musicPlaySymbol.playState ? @drawable/bottom_pause_img : @drawable/bottom_play}"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onPlayClick()}"/>
+
+            <ImageView
+                android:id="@+id/img_next"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="91px"
+                android:scaleType="center"
+                android:src="@drawable/bootom_next_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onNextClick()}"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="91px"
+                android:scaleType="center"
+                app:playmodel="@{musicPlaySymbol.playMode}"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onModeClick()}"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

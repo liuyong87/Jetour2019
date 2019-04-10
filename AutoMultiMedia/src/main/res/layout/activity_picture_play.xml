@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class = "PictureData">
+        <import type="android.view.View" />
+        <variable
+            name="listener"
+            type="com.semisky.automultimedia.activity.PicturePlayActivity.PictureControlListener"/>
+
+        <variable
+            name="pictureSymbol"
+            type="com.semisky.automultimedia.activity.symbol.PicturePlaySymbol"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+        <LinearLayout
+            android:id="@+id/bottom_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:visibility="@{pictureSymbol.showBottomBar?View.VISIBLE:View.GONE}"
+            android:background="@drawable/background_vedio_control">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bootom_menu_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onMenuClick()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bottom_wallpaper"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onWallpaperClick()}"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bootom_pre_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onPreClick()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                app:imagesrc="@{pictureSymbol.picturePlaying ? @drawable/bottom_pause_img : @drawable/bottom_play}"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onPlayClick()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bootom_next_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onNextClick()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bottom_scale"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onScaleClick()}"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/bottom_rotate"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> listener.onRotateClick()}"/>
+        </LinearLayout>
+        <com.semisky.automultimedia.common.view.CustomSingleMessageView
+            android:id="@+id/show_message_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{pictureSymbol.showNoticeView ? View.VISIBLE:View.GONE}"/>
+    </RelativeLayout>
+
+
+</layout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.semisky.automultimedia"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-feature android:name="android.hardware.usb.host" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--监听系统配制权限-->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+
+
+    <application
+        android:name=".MediaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+        android:name="com.semisky.automultimedia.common.data.PictureGlideModule"
+        android:value="GlideModule"/>
+
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity
+            android:name=".activity.MusicPlayActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="locale|layoutDirection">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.VideoPlayActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:configChanges="locale|layoutDirection"/>
+
+        <activity
+            android:name=".activity.PicturePlayActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="locale|layoutDirection"/>
+
+        <activity
+            android:name=".activity.SwitchActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/ActivityTheme"
+            android:configChanges="locale|layoutDirection"/>
+
+        <receiver android:name=".common.broadRecevier.DeviceReciver">
+            <intent-filter>
+                <data android:scheme="file" />
+
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <action android:name="android.intent.action.MEDIA_CHECKING" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <!-- 屏保广播ACTION NAME -->
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.AVMReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.IS_AVM"/>
+                <action android:name="com.semisky.IS_AD_CLOSE"/>
+            </intent-filter>
+        </receiver>
+
+        <!--注册地图、iflaytek升级广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.UpdateReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.broadcast.ACTION_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.ModeReciver">
+            <intent-filter>
+                <!--后台播放音乐广播通知-->
+                <action android:name="com.semisky.broadcast.MUSIC_START_ACTIVITY" />
+            </intent-filter>
+        </receiver>
+
+       <!-- <receiver android:name="com.semisky.automultimedia.common.broadRecevier.ScreensaverReciver">
+            <intent-filter>
+                &lt;!&ndash;注册屏保状态广播&ndash;&gt;
+                <action android:name="com.semisky.broadcast.SCREEN_START_ACTIVITY" />
+                &lt;!&ndash;注册关屏状态广播&ndash;&gt;
+                <action android:name="com.semisky.broadcast.BASEBOARD_START_ACTIVITY"/>
+            </intent-filter>
+        </receiver>-->
+        <!--注册蓝牙状状态变化广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.BTReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.cx62.bluetooth.adapter.action.ACTION_CALL_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <!--注册中间件广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.MiddlewareReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.IS_MEDIA" />
+            </intent-filter>
+        </receiver>
+        <!--注册道道通地图广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.MapReceiver">
+            <intent-filter>
+                <action android:name="AUTONAVI_STANDARD_BROADCAST_SEND" />
+            </intent-filter>
+        </receiver>
+        <!--注册科大讯飞广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.IFlytekVoiceReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.broadcast.VOICE_START_ACTIVITY" />
+            </intent-filter>
+        </receiver>
+        <!--测试广播-->
+        <receiver android:name="com.semisky.automultimedia.common.broadRecevier.TestReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.broadcast.action.GET_APP_INFO" />
+                <action android:name="com.semisky.broadcast.ACTION_LANGUAGE_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <!--注册工厂测试广播-->
+        <receiver android:name=".common.broadRecevier.FactoryTestReceiver">
+            <intent-filter>
+                <action android:name="com.semisky.autotest.ACTION_USB_MUSIC_PLAY"/>
+                <action android:name="com.semisky.autotest.ACTION_USB_VIDEO_PLAY"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.DeviceMountService">
+            <intent-filter>
+                <action android:name="com.semisky.action.MOUNT_USB_SERVICE" />
+                <action android:name="com.semisky.action.LAUNCHER_START_MEDIA" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.MusicPlayService">
+            <intent-filter>
+                <action android:name="com.semisky.music.ACTION_PLAY_TOGGLE" />
+                <action android:name="com.semisky.ACTION_MUSIC_TEST"/>
+            </intent-filter>
+        </service>
+
+
+    </application>
+
+</manifest>

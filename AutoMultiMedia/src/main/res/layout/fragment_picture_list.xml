@@ -1,0 +1,28 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class =".PictureList">
+
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="13px"
+            android:paddingTop="20px"
+            android:paddingBottom="30px"
+            android:numColumns="4"
+            android:horizontalSpacing="2px"
+            android:verticalSpacing="20px"
+            android:scrollbarStyle="insideInset"
+            android:paddingRight="21px"
+            android:fastScrollAlwaysVisible="true"
+            android:listSelector="@drawable/selector_picture_item_bg"/>
+
+    </FrameLayout>
+</layout>
+

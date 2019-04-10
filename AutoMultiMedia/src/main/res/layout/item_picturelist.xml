@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="pictureinfo"
+            type="com.semisky.automultimedia.common.bean.PictureInfo"/>
+        <variable
+            name="adapter"
+            type="com.semisky.automultimedia.common.adapter.PictureListAdapter"/>
+        
+    </data>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_picture_item"
+        android:padding="1px">
+        <ImageView
+            android:layout_width="188px"
+            android:layout_height="142px"
+            app:imageurl="@{pictureinfo.picUrl}"/>
+    </FrameLayout>
+
+</layout>

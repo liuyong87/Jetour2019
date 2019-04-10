@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 图片后缀 -->
+    <string-array name="image_suffix">
+        <item>.png</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+        <item>.gif</item>
+    </string-array>
+    <!-- 音频后缀 -->
+    <string-array name="music_suffix">
+        <item>.mp3</item>
+        <item>.wma</item>
+        <item>.aac</item>
+        <item>.wav</item>
+        <item>.ape</item>
+        <item>.ogg</item>
+        <item>.flac</item>
+        <item>.midi</item>
+        <item>.aif</item>
+        <item>.aifc</item>
+        <item>.aiff</item>
+        <item>.acm</item>
+        <item>.m4a</item>
+        <item>.wmv</item>
+        <item>.wam</item>
+        <item>.ra</item>
+        <item>.amr</item>
+        <item>.ac3</item>
+    </string-array>
+    <!-- 视频后缀 -->
+    <string-array name="video_suffix">
+        <item>.mp4</item>
+        <item>.avi</item>
+        <item>.mkv</item>
+        <item>.rmvb</item>
+        <item>.mpeg</item>
+        <item>.flv</item>
+        <item>.3gp</item>
+        <item>.3g2</item>
+        <item>.mov</item>
+        <item>.mpe</item>
+        <item>.asx</item>
+        <item>.m4v</item>
+        <!--不支持ts会导致播放操作比较卡顿-->
+        <!--<item>.ts</item>-->
+        <item>.mpg</item>
+        <item>.vob</item>
+        <item>.bup</item>
+        <item>.ifo</item>
+        <item>.vop</item>
+        <item>.rm</item>
+        <item>.wmv</item>
+        <item>.divx</item>
+        <item>.asf</item>
+        <item>.dat</item>
+        <item>.f4v</item>
+        <item>.ini</item>
+        <item>.3gpp</item>
+        <item>.trp</item>
+        <item>.webm</item>
+    </string-array>
+
+    <!--即是音频也是视频文件后缀的-->
+    <string-array name="audio_and_video_suffix">
+        <item>.wmv</item>
+    </string-array>
+
+
+</resources>

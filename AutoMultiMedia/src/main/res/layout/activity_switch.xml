@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class = "SwitchData">
+
+        <variable
+            name="tablistener"
+            type="com.semisky.automultimedia.activity.SwitchActivity.SelectTabListener"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_switch">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="128px"
+                android:layout_marginLeft="94px"
+                android:src="@drawable/icon_usb"/>
+
+            <LinearLayout
+                android:id="@+id/switch_fragment"
+                android:layout_width="802px"
+                android:layout_height="440px"
+                android:orientation="vertical"
+                android:layout_marginLeft="373px"
+                android:layout_marginTop="38px"
+                android:background="@drawable/background_switch_fragment">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tab_music"
+                        android:layout_width="270px"
+                        android:layout_height="74px"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="34px"
+                        android:text="@string/music"
+                        android:onClick="@{() -> tablistener.onMusicClick()}"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/divider_line"/>
+                    <TextView
+                        android:id="@+id/tab_vedio"
+                        android:layout_width="270px"
+                        android:layout_height="74px"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="34px"
+                        android:text="@string/vedio"
+                        android:onClick="@{() -> tablistener.onVedioClick()}"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/divider_line"/>
+                    <TextView
+                        android:id="@+id/tab_picture"
+                        android:layout_width="270px"
+                        android:layout_height="74px"
+                        android:gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="34px"
+                        android:text="@string/picture"
+                        android:onClick="@{() -> tablistener.onPictureClick()}"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="#cedeff"/>
+                <RelativeLayout
+                    android:id="@+id/contianer"
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="373px"
+                android:layout_marginTop="4px"
+                android:layout_below="@id/switch_fragment"
+                android:src="@drawable/background_switch_shadow"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_switch_bottom">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bottom_back_img"
+                android:background="@drawable/module_btn_highlight_selector"
+                android:onClick="@{() -> tablistener.onBackClick()}"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:src="@drawable/bottom_usb_pre"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
+
+

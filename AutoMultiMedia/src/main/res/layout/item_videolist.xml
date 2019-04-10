@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="videoItem"
+            type="com.semisky.automultimedia.common.bean.VideoInfo"/>
+
+        <variable
+            name="videoListAdapter"
+            type="com.semisky.automultimedia.common.adapter.VideoListAdapter"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70px"
+        android:orientation="horizontal"
+        android:background="@{videoItem.playing ? @drawable/background_playing : @drawable/selector_common_item_bg }"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="67px"
+            app:imagesrc="@{videoItem.isValid ? @drawable/icon_video_ok : @drawable/icon_video_fail}"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="32px"
+            android:textColor="@{videoItem.playing ? @color/color_music_playing : @color/colorWhite}"
+            android:layout_marginLeft="50px"
+            android:text="@{videoItem.videoTitle}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="90px"
+            app:imagesrc="@{videoItem.playing ? @drawable/icon_music_playing : null}"/>
+
+    </LinearLayout>
+
+</layout>

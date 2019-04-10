@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AutoMultiMedia</string>
+    <string name="on_loading">USB device is loading...</string>
+    <string name="load_success">Load Success!</string>
+    <string name="load_failure">Load failed!</string>
+    <string name="no_file">No valid media files！</string>
+    <string name="hint_no_usb">Please insert USB device!</string>
+    <string name="all_music">All songs</string>
+    <string name="music_list_back_text">Back</string>
+
+    <string name="music">music</string>
+    <string name="vedio">video</string>
+    <string name="picture">picture</string>
+    <string name="list">list</string>
+    <string name="next_music">next:</string>
+    <string name="hint">Tips</string>
+    <string name="wallpaper_warn">Only support the image size of 1280*720,and the format of JPG,PNG,and BMP</string>
+
+    <string name="music_unkown_song">unknow song</string>
+    <string name="music_unkown_artist">unknow song</string>
+    <string name="music_unkown_album">unknow artist</string>
+    <string name="music_garbled_artist">unknow song</string>
+    <string name="music_garbled_album">unknow artist</string>
+    
+    <string name="sprit">/</string>
+    <string name="video_message_error_info">File error,unable to play！</string>
+    <string name="video_warning_title_info">Warning！！！</string>
+    <string name="video_warning_content_info">For your safety,please do not watch video while diving./n
+        If you need to watch,please enter Settings to turn on the switch.</string>
+    <string name="video_warning_button_info">return</string>
+
+    <string name="picture_set_wallpaper_success_info">Set up successfully！</string>
+    <string name="picture_set_wallpaper_fail_info">Set up failed！</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
